@@ -29,7 +29,7 @@ ALTER USER 'sys_test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pass
 
 ### Ответ:
 
-**1.1 Поднимаем инстанс MySQL через docker-compose.yml:
+**1.1 Поднимаем инстанс MySQL через docker-compose.yml:**
 ```
 version: '3.8'
 
@@ -48,12 +48,12 @@ volumes:
   db_data:
 ```
 
-**1.1а Создаем подключение через DBeaver и подключаемся к БД:
+**1.1а Создаем подключение через DBeaver и подключаемся к БД:**
 
 <img src = "img/01.png" width = 100%>
 
 
-**1.2 Создаем учётную запись sys_temp:
+**1.2 Создаем учётную запись sys_temp:**
 ```
 CREATE USER 'sys_temp'@'%' IDENTIFIED BY 'password';
 ```
@@ -63,7 +63,7 @@ CREATE USER 'sys_temp'@'%' IDENTIFIED BY 'password';
 
 **1.4. Дайте все права для пользователя sys_temp.**
 
-**1.5. Выполните запрос на получение списка прав для пользователя sys_temp.
+**1.5. Выполните запрос на получение списка прав для пользователя sys_temp.**
 
 **1.6. Переподключитесь к базе данных от имени sys_temp.**
 
