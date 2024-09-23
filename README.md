@@ -63,22 +63,25 @@ CREATE USER 'sys_temp'@'%' IDENTIFIED BY 'password';
 ```
 SELECT user, host FROM mysql.user;
 ```
+<img src = "img/03.png" width = 100%>
 
 **1.4. Даём все права для пользователя sys_temp.**
 ```
 GRANT ALL PRIVILEGES ON *.* TO 'sys_temp'@'%' WITH GRANT OPTION;
 ```
+<img src = "img/04.png" width = 100%>
 
 **1.5. Выполните запрос на получение списка прав для пользователя sys_temp.**
 ```
 SHOW GRANTS FOR 'sys_temp'@'%';
 ```
+<img src = "img/05.png" width = 100%>
 
 **1.6. Переподключитесь к базе данных от имени sys_temp.**
 
 Для смены типа аутентификации с sha2 используйте запрос:
 ```
-ALTER USER 'sys_test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+ALTER USER 'sys_test'@'192.168.58.111' IDENTIFIED WITH mysql_native_password BY 'password';
 ```
 
 1.6. По ссылке https://downloads.mysql.com/docs/sakila-db.zip скачайте дамп базы данных.
