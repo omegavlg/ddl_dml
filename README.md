@@ -60,10 +60,19 @@ CREATE USER 'sys_temp'@'%' IDENTIFIED BY 'password';
 <img src = "img/02.png" width = 100%>
 
 **1.3. Выполняем запрос на получение списка пользователей в базе данных.**
+```
+SELECT user, host FROM mysql.user;
+```
 
-**1.4. Дайте все права для пользователя sys_temp.**
+**1.4. Даём все права для пользователя sys_temp.**
+```
+GRANT ALL PRIVILEGES ON *.* TO 'sys_temp'@'%' WITH GRANT OPTION;
+```
 
 **1.5. Выполните запрос на получение списка прав для пользователя sys_temp.**
+```
+SHOW GRANTS FOR 'sys_temp'@'%';
+```
 
 **1.6. Переподключитесь к базе данных от имени sys_temp.**
 
