@@ -29,7 +29,7 @@ ALTER USER 'sys_test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pass
 
 ### Ответ:
 
-**1.1 Поднимаем инстанс MySQL через docker-compose.yml:**
+**1.1 Поднимаем инстанс MySQL с помощью docker-compose.yml:**
 ```
 version: '3.8'
 
@@ -38,7 +38,7 @@ services:
     image: mysql:8.0
     container_name: mysql8
     environment:
-      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
     volumes:
@@ -48,7 +48,43 @@ volumes:
   db_data:
 ```
 
-**1.1а Создаем подключение через DBeaver и подключаемся к БД:**
+**Запускаем командой:**
+```
+docker compose up -d
+```
+<img src = "img/01.png" width = 100%>
+
+**Подключаемся к MySQL серверу:**
+```
+docker exec -it $(docker compose ps -q db) mysql -u root -p
+```
+<img src = "img/02.png" width = 100%>
+
+**1.2. Создаем учетную запись sys_temp и паролем password:**
+```
+CREATE USER 'sys_temp'@'%' IDENTIFIED BY 'password';
+```
+<img src = "img/03.png" width = 100%>
+
+
+**Выполняем запрос на получение списка пользователей в базе данных.**
+```
+SELECT user, host FROM mysql.user;
+```
+<img src = "img/04.png" width = 100%>
+
+
+
+
+
+
+
+
+
+
+
+
+Создаем подключение через DBeaver и подключаемся к БД:**
 
 <img src = "img/01.png" width = 100%>
 
