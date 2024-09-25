@@ -16,7 +16,7 @@
 
 Для смены типа аутентификации с sha2 используйте запрос:
 ```
-ALTER USER 'sys_test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+ALTER USER 'sys_temp'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 ```
 
 1.6. По ссылке https://downloads.mysql.com/docs/sakila-db.zip скачайте дамп базы данных.
@@ -84,6 +84,34 @@ SHOW GRANTS FOR 'sys_temp'@'%' \G
 ```
 <img src = "img/06.png" width = 100%>
 
+**1.6. Переподключитесь к базе данных от имени sys_temp.**
+
+Для смены типа аутентификации с sha2 используйте запрос:
+```
+ALTER USER 'sys_test'@'192.168.58.111' IDENTIFIED WITH mysql_native_password BY 'password';
+```
+**1.7. Скачиваем дамп базы данных:**
+```
+wget https://downloads.mysql.com/docs/sakila-db.zip
+```
+<img src = "img/07.png" width = 100%>
+
+**Распаковываем полученный архив:**
+```
+unzip sakila-db.zip
+```
+<img src = "img/08.png" width = 100%>
+
+**1.8. Восстанавливаем базу данных из дампа.**
+
+**Копируем файлы скриптов внутрь контейнера с MySQL:**
+```
+docker cp sakila-db/sakila-schema.sql $(docker compose ps -q db):/sakila-schema.sql
+docker cp sakila-db/sakila-data.sql $(docker compose ps -q db):/sakila-data.sql
+```
+
+
+1.9. При работе в IDE сформируйте ER-диаграмму получившейся базы данных. При работе в командной строке используйте команду для получения всех таблиц базы данных. (скриншот)
 
 
 
