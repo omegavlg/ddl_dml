@@ -129,10 +129,6 @@ mysql -u sys_temp -p < /sakila-data.sql
 <img src = "img/12.png" width = 100%>
 <img src = "img/13.png" width = 100%>
 
-
-
-
-
 ## Задание 2
 Составьте таблицу, используя любой текстовый редактор или Excel, в которой должно быть два столбца: в первом должны быть названия таблиц восстановленной базы, во втором названия первичных ключей этих таблиц. Пример: (скриншот/текст)
 
@@ -141,6 +137,28 @@ mysql -u sys_temp -p < /sakila-data.sql
 customer         | customer_id
 ```
 ### Ответ:
+
+| Название таблицы   | Название первичного ключа        |
+|--------------------|----------------------------------|
+| actor              | actor_id                         |
+| film               | film_id                          |
+| customer           | customer_id                      |
+| inventory          | inventory_id                     |
+| rental             | rental_id                        |
+| payment            | payment_id                       |
+| staff              | staff_id                         |
+| store              | store_id                         |
+| category           | category_id                      |
+| film_category      | film_id, category_id             |
+| language           | language_id                      |
+| address            | address_id                       |
+| city               | city_id                          |
+| country            | country_id                       |
+| customer_address   | customer_id, address_id         |
+
+
+
+
 
 ## Задание 3*
 3.1. Уберите у пользователя sys_temp права на внесение, изменение и удаление данных из базы sakila.
