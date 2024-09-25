@@ -117,6 +117,7 @@ docker exec -it mysql8 bash
 ls -al
 ```
 <img src = "img/10.png" width = 100%>
+
 ```
 mysql -u sys_temp -p < /sakila-schema.sql
 mysql -u sys_temp -p < /sakila-data.sql
