@@ -109,67 +109,24 @@ unzip sakila-db.zip
 docker cp sakila-db/sakila-schema.sql $(docker compose ps -q db):/sakila-schema.sql
 docker cp sakila-db/sakila-data.sql $(docker compose ps -q db):/sakila-data.sql
 ```
+<img src = "img/09.png" width = 100%>
 
-
-1.9. При работе в IDE сформируйте ER-диаграмму получившейся базы данных. При работе в командной строке используйте команду для получения всех таблиц базы данных. (скриншот)
-
-
-
-
-
-
-
-
-
-Создаем подключение через DBeaver и подключаемся к БД:**
-
-<img src = "img/01.png" width = 100%>
-
-
-**1.2 Создаем учётную запись sys_temp:**
+**Заходим внутрь контейнера с MySQL для выполнения импорта БД из скопированных скриптов:**
 ```
-CREATE USER 'sys_temp'@'%' IDENTIFIED BY 'password';
+docker exec -it mysql8 bash
+ls -al
 ```
-<img src = "img/02.png" width = 100%>
-
-**1.3. Выполняем запрос на получение списка пользователей в базе данных.**
+<img src = "img/10.png" width = 100%>
 ```
-SELECT user, host FROM mysql.user;
+mysql -u sys_temp -p < /sakila-schema.sql
+mysql -u sys_temp -p < /sakila-data.sql
 ```
-<img src = "img/03.png" width = 100%>
+<img src = "img/11.png" width = 100%>
 
-**1.4. Даём все права для пользователя sys_temp.**
-```
-GRANT ALL PRIVILEGES ON *.* TO 'sys_temp'@'%' WITH GRANT OPTION;
-```
-<img src = "img/04.png" width = 100%>
+**1.9. ER-диаграмма и выборка всех таблиц базы данных.**
 
-**1.5. Выполните запрос на получение списка прав для пользователя sys_temp.**
-```
-SHOW GRANTS FOR 'sys_temp'@'%';
-```
-<img src = "img/05.png" width = 100%>
-
-**1.6. Переподключитесь к базе данных от имени sys_temp.**
-
-Для смены типа аутентификации с sha2 используйте запрос:
-```
-ALTER USER 'sys_test'@'192.168.58.111' IDENTIFIED WITH mysql_native_password BY 'password';
-```
-
-1.6. По ссылке https://downloads.mysql.com/docs/sakila-db.zip скачайте дамп базы данных.
-
-1.7. Восстановите дамп в базу данных.
-
-1.8. При работе в IDE сформируйте ER-диаграмму получившейся базы данных. При работе в командной строке используйте команду для получения всех таблиц базы данных. (скриншот)
-
-
-
-
-
-
-
-
+<img src = "img/12.png" width = 100%>
+<img src = "img/13.png" width = 100%>
 
 
 
